@@ -1,4 +1,4 @@
 package com.mydocent.docent.dto;
 
-public record QuestionRequestDto(String question) {
+public record QuestionRequestDto(String question, String category) {
 }

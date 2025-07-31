@@ -17,7 +17,10 @@ public class QuestionEntity {
     @JoinColumn(name = "llm_response_id")
     private LLMResponseEntity llmResponseEntity;
 
-    @Column
+    @Column(length = 30)
+    private String category;
+
+    @Column(length = 255, nullable = false)
     private String fullQuestion;
 
     @CreatedDate
@@ -25,8 +28,9 @@ public class QuestionEntity {
     private LocalDateTime createdAt;
 
     //생성자 추가
-    public QuestionEntity(String fullQuestion, LLMResponseEntity llmResponseEntity){
+    public QuestionEntity(String fullQuestion, String category, LLMResponseEntity llmResponseEntity){
         this.fullQuestion = fullQuestion;
+        this.category = category;
         this.llmResponseEntity = llmResponseEntity;
         this.createdAt = LocalDateTime.now();
     }

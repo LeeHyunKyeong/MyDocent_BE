@@ -17,8 +17,8 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @PostMapping
-    public ResponseEntity<LLMResponseDto> askQuestion(@RequestBody QuestionRequestDto questionRequestDto){
-        LLMResponseDto response = questionService.processQuestion(questionRequestDto.question());
+    public ResponseEntity<LLMResponseDto> askQuestion(@RequestBody QuestionRequestDto questionRequest){
+        LLMResponseDto response = questionService.processQuestion(questionRequest.question(), questionRequest.category());
         return ResponseEntity.ok(response);
     }
 }

@@ -18,7 +18,7 @@ public class QuestionService {
     private final LLMClient llmClient;
     private final LLMParser llmParser;
 
-    public LLMResponseDto processQuestion(String question){
+    public LLMResponseDto processQuestion(String question, String category){
         // 1. LLM 호출
         String prompt = llmClient.buildPrompt(question);
         String response = llmClient.call(prompt);
@@ -27,7 +27,7 @@ public class QuestionService {
         llmRepository.save(responseEntity);
 
         // 2. 생성자로 질문 + 응답 연결
-        QuestionEntity userQuestion = new QuestionEntity(question, responseEntity);
+        QuestionEntity userQuestion = new QuestionEntity(question, category, responseEntity);
         questionRepository.save(userQuestion);
 
         // 3. DTO 반환
