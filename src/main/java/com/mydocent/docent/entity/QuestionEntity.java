@@ -17,7 +17,7 @@ public class QuestionEntity {
     @JoinColumn(name = "llm_response_id")
     private LLMResponseEntity llmResponseEntity;
 
-    @Column(length = 30)
+    @Column(length = 40)
     private String category;
 
     @Column(length = 255, nullable = false)
